@@ -1,18 +1,60 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { ImNext, ImPrevious } from 'react-icons/im';
+import {projects} from '../../project-data.js'
 
 const Projects = () => {
+  const [current, setCurrent] = useState(0)
+
+  const next = () => {
+    if(current === projects.length-1) {
+      setCurrent(p=>p=0)
+    } else {
+      setCurrent(p=>p+1)
+      console.log(current)
+    }
+  }
+
+  const previous = () => {
+    if(current === 0) {
+      setCurrent(p=>p=projects.length-1)
+    } else {
+      setCurrent(p=>p-1)
+      console.log(current)
+    }
+  }
   return (
     <>
       <div className="projects">
+<div className="previous">
+  <ImPrevious size={50} onClick={() => {
+            previous()
+          }}/>
+</div>
         <div className="project-cards">
           <div className="project-image">
-            <img src='https://general-ez.s3-us-west-1.amazonaws.com/spoti.png' />
+            <img src={projects[current].image} />
           </div>
           <div className="project-text">
-            <h1>Spotioke</h1>
-            <p>An app that does... and .... and ...</p>
+            <h1>{projects[current].name}</h1>
+            <p>{projects[current].desc}</p>
+        </div>
+        <div className="buttons">
+          <div>
+          <input type="submit" value="Live"/>
+          </div>
+
+          <div>
+          <input type="submit" value="Repo"/>
+          </div>
         </div>
 
+
+        </div>
+
+        <div className="next">
+          <ImNext size={50} onClick={() => {
+            next()
+          }}/>
         </div>
 
 

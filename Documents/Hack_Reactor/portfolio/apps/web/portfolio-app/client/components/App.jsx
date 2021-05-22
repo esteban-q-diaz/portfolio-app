@@ -17,17 +17,17 @@ const App = () => {
     <>
       <Router>
         <Switch>
-          <Route path='/' exact>
+          {/* <Route path='/' exact>
             <Header />
             <Projects />
-          </Route>
+          </Route> */}
 
 
 
-          <Route path='/projects' exact>
+          <Route path='/' exact>
             <Projects />
           </Route>
-
+{/*
           <Route path='/about' exact>
             <About />
           </Route>
@@ -35,7 +35,7 @@ const App = () => {
 
           <Route path='/contact' exact>
             <Contact />
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
     </>
